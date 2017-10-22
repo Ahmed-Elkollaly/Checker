@@ -227,10 +227,17 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
             audioEngine.stop()
             recognitionRequest?.endAudio()
             recordButton.isEnabled = false
-            self.speakText()
+            
+            OperationQueue.main.addOperation {
+                self.speakText()
+            }
+            
 
 
         } else {
+            OperationQueue.main.addOperation {
+                TextToSpeechService.stopTextToSpeech()
+            }
             activityIndicator.isHidden = false
             activityIndicator.startAnimating()
             try! startRecording()
@@ -241,26 +248,26 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
     
     
     public func speakText(){
-      
         
-                                if let text = self.textLabel.text {
-                               
-                                        let words = TextProcessingService.textProcessing(text)
-                                        let checker = GrammarCheckingService.grammarChecking(words)
-                                    
-                                    
-                                    self.textLabel.text = checker.0
-                                    self.resultTextLabel.text = checker.1
-            //                        self.correctionLabel.isHidden = false
-                                    self.resultTextLabel.isHidden = false
-                                    if checker.0 == checker.1 {
-                                        TextToSpeechService.textToSpeech("no mistakes")
-                                    }else{
+        
+        if let text = self.textLabel.text {
             
-                                        TextToSpeechService.textToSpeech("The correction is \(checker.1)")
-                                    }
-                                }
-                            }
+            let words = TextProcessingService.textProcessing(text)
+            let checker = GrammarCheckingService.grammarChecking(words)
+            
+            
+            self.textLabel.text = checker.0
+            self.resultTextLabel.text = checker.1
+            //                        self.correctionLabel.isHidden = false
+            self.resultTextLabel.isHidden = false
+            if checker.0 == checker.1 {
+                TextToSpeechService.textToSpeech("no mistakes")
+            }else{
+                
+                TextToSpeechService.textToSpeech("The correction is \(checker.1)")
+            }
+        }
+    }
     
 }
 

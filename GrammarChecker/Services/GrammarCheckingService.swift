@@ -127,7 +127,14 @@ class GrammarCheckingService {
                 }else if type == .particle {
                     let r = self.presentTense(.plural, w)
                     results.append(r)
-                }else{
+                }else if type == .modalVerb {
+                    if w.word == w.wordBaseForm {
+                        results.append(w)
+                    }else{
+                        results.append(Word(w.wordBaseForm,"Verb",w.wordBaseForm))
+                            errors.append(w)
+                    }
+                } else{
                     results.append(w)
                 }
                 

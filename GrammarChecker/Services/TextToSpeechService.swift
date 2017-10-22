@@ -55,4 +55,9 @@ class TextToSpeechService: UIViewController, AVSpeechSynthesizerDelegate  {
             }
         }
     }
+    static func stopTextToSpeech(){
+        if synthesizer.isSpeaking {
+            synthesizer.stopSpeaking(at: .immediate)
+        }
+    }
 }
