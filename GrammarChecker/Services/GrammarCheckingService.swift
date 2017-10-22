@@ -209,5 +209,57 @@ class GrammarCheckingService {
         }
         return type
     }
-
+    static func verbContinuousForm(_ word: Word) -> Word{
+        var result = word.wordBaseForm
+        var secondCharBeforeLast = " "
+        if result.characters.count > 2 {
+            secondCharBeforeLast = String(result[result.index(result.endIndex, offsetBy: -3)])
+        }
+        let beforeLastCh = String(result[result.index(result.endIndex, offsetBy: -2)])
+        //Check if last char is 'y' and before last is constant then remove 'y' and add 'ies' ex. cry ==> cries
+        let lastChar = String(result[result.index(result.endIndex, offsetBy: -1)])
+        if lastChar == "e" {
+            if beforeLastCh == "i"{
+                result.remove(at: result.index(result.endIndex, offsetBy: -1))
+                result.remove(at: result.index(result.endIndex, offsetBy: -1))
+                result += "y"
+            }else{
+                result.remove(at: result.index(result.endIndex, offsetBy: -1))
+            }
+            
+            result += "ing"
+        }else if !EnglishConstants.vowels.contains(lastChar) && EnglishConstants.vowels.contains(beforeLastCh) && !EnglishConstants.vowels.contains(secondCharBeforeLast){
+            result += "\(lastChar)ing"
+        }else{
+            //if regular verb with no special endings just add S
+            result += "ing"
+        }
+        var resultWord = word
+        resultWord.word = result
+        return resultWord
+    }
+    static func regularVerbPastForm(_ word:Word) -> Word {
+        var result = word.wordBaseForm
+        var secondCharBeforeLast = " "
+        if result.characters.count > 2 {
+            secondCharBeforeLast = String(result[result.index(result.endIndex, offsetBy: -3)])
+        }
+        let beforeLastCh = String(result[result.index(result.endIndex, offsetBy: -2)])
+        //Check if last char is 'y' and before last is constant then remove 'y' and add 'ies' ex. cry ==> cries
+        let lastChar = String(result[result.index(result.endIndex, offsetBy: -1)])
+        if lastChar == Tense.PresentSimple.Y && !EnglishConstants.vowels.contains(beforeLastCh) {
+            result.remove(at: result.index(result.endIndex, offsetBy: -1))
+            result += "ied"
+        }else if lastChar == "e" {
+            result += "d"
+        }else if !EnglishConstants.vowels.contains(lastChar) && EnglishConstants.vowels.contains(beforeLastCh) && !EnglishConstants.vowels.contains(secondCharBeforeLast){
+            result += "\(lastChar)ed"
+        }else{
+            //if regular verb with no special endings just add S
+            result += "ed"
+        }
+        var resultWord = word
+        resultWord.word = result
+        return resultWord
+    }
 }
