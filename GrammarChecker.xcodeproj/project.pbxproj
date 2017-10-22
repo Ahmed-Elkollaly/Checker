@@ -7,14 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F72014C71F9CA3BA00E999D0 /* VoiceRecognitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72014C61F9CA3BA00E999D0 /* VoiceRecognitionService.swift */; };
+		F7500A521F96417D008AA9FE /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7500A511F96417D008AA9FE /* TextToSpeechService.swift */; };
+		F7500A541F96418F008AA9FE /* SpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7500A531F96418F008AA9FE /* SpeechRecognition.swift */; };
+		F7500A571F9643BA008AA9FE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7500A561F9643BA008AA9FE /* AVFoundation.framework */; };
+		F7500A5A1F96515D008AA9FE /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7500A591F96515D008AA9FE /* RoundButton.swift */; };
+		F78E95251F926721005334C0 /* Tense.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78E95241F926721005334C0 /* Tense.swift */; };
 		F7B736F41F8D086D00355F6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B736F31F8D086D00355F6C /* AppDelegate.swift */; };
 		F7B736F61F8D086D00355F6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B736F51F8D086D00355F6C /* ViewController.swift */; };
 		F7B736F91F8D086D00355F6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7B736F71F8D086D00355F6C /* Main.storyboard */; };
 		F7B736FB1F8D086D00355F6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7B736FA1F8D086D00355F6C /* Assets.xcassets */; };
 		F7B736FE1F8D086D00355F6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7B736FC1F8D086D00355F6C /* LaunchScreen.storyboard */; };
+		F7B737061F8D08AC00355F6C /* GrammarCheckingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B737051F8D08AC00355F6C /* GrammarCheckingService.swift */; };
+		F7B7370A1F8D09C800355F6C /* TextProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B737091F8D09C800355F6C /* TextProcessingService.swift */; };
+		F7F8A47B1F8EC87100A1D810 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8A47A1F8EC87100A1D810 /* Word.swift */; };
+		F7F8A47D1F8ED11D00A1D810 /* EnglishConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F8A47C1F8ED11D00A1D810 /* EnglishConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F72014C61F9CA3BA00E999D0 /* VoiceRecognitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecognitionService.swift; sourceTree = "<group>"; };
+		F7500A511F96417D008AA9FE /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
+		F7500A531F96418F008AA9FE /* SpeechRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognition.swift; sourceTree = "<group>"; };
+		F7500A561F9643BA008AA9FE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F7500A591F96515D008AA9FE /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		F78E95241F926721005334C0 /* Tense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tense.swift; sourceTree = "<group>"; };
 		F7B736F01F8D086D00355F6C /* GrammarChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrammarChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7B736F31F8D086D00355F6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7B736F51F8D086D00355F6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +38,10 @@
 		F7B736FA1F8D086D00355F6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7B736FD1F8D086D00355F6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7B736FF1F8D086D00355F6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7B737051F8D08AC00355F6C /* GrammarCheckingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarCheckingService.swift; sourceTree = "<group>"; };
+		F7B737091F8D09C800355F6C /* TextProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextProcessingService.swift; sourceTree = "<group>"; };
+		F7F8A47A1F8EC87100A1D810 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		F7F8A47C1F8ED11D00A1D810 /* EnglishConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +49,73 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7500A571F9643BA008AA9FE /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F7500A551F9643BA008AA9FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7500A561F9643BA008AA9FE /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7500A581F965143008AA9FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F7500A591F96515D008AA9FE /* RoundButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F79228931F93643F000BF476 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F7B737051F8D08AC00355F6C /* GrammarCheckingService.swift */,
+				F7B737091F8D09C800355F6C /* TextProcessingService.swift */,
+				F7500A511F96417D008AA9FE /* TextToSpeechService.swift */,
+				F7500A531F96418F008AA9FE /* SpeechRecognition.swift */,
+				F72014C61F9CA3BA00E999D0 /* VoiceRecognitionService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F79228941F936448000BF476 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7F8A47A1F8EC87100A1D810 /* Word.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F79228951F93644F000BF476 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F7B736F71F8D086D00355F6C /* Main.storyboard */,
+				F7B736FA1F8D086D00355F6C /* Assets.xcassets */,
+				F7B736FC1F8D086D00355F6C /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		F79228961F936504000BF476 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F7B736F51F8D086D00355F6C /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		F7B736E71F8D086D00355F6C = {
 			isa = PBXGroup;
 			children = (
 				F7B736F21F8D086D00355F6C /* GrammarChecker */,
 				F7B736F11F8D086D00355F6C /* Products */,
+				F7500A551F9643BA008AA9FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,10 +131,13 @@
 			isa = PBXGroup;
 			children = (
 				F7B736F31F8D086D00355F6C /* AppDelegate.swift */,
-				F7B736F51F8D086D00355F6C /* ViewController.swift */,
-				F7B736F71F8D086D00355F6C /* Main.storyboard */,
-				F7B736FA1F8D086D00355F6C /* Assets.xcassets */,
-				F7B736FC1F8D086D00355F6C /* LaunchScreen.storyboard */,
+				F7F8A47C1F8ED11D00A1D810 /* EnglishConstants.swift */,
+				F78E95241F926721005334C0 /* Tense.swift */,
+				F7500A581F965143008AA9FE /* View */,
+				F79228961F936504000BF476 /* View Controllers */,
+				F79228951F93644F000BF476 /* Assets */,
+				F79228941F936448000BF476 /* Model */,
+				F79228931F93643F000BF476 /* Services */,
 				F7B736FF1F8D086D00355F6C /* Info.plist */,
 			);
 			path = GrammarChecker;
@@ -136,8 +215,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7F8A47D1F8ED11D00A1D810 /* EnglishConstants.swift in Sources */,
 				F7B736F61F8D086D00355F6C /* ViewController.swift in Sources */,
+				F7B7370A1F8D09C800355F6C /* TextProcessingService.swift in Sources */,
+				F7F8A47B1F8EC87100A1D810 /* Word.swift in Sources */,
+				F7500A541F96418F008AA9FE /* SpeechRecognition.swift in Sources */,
 				F7B736F41F8D086D00355F6C /* AppDelegate.swift in Sources */,
+				F7500A5A1F96515D008AA9FE /* RoundButton.swift in Sources */,
+				F7500A521F96417D008AA9FE /* TextToSpeechService.swift in Sources */,
+				F78E95251F926721005334C0 /* Tense.swift in Sources */,
+				F72014C71F9CA3BA00E999D0 /* VoiceRecognitionService.swift in Sources */,
+				F7B737061F8D08AC00355F6C /* GrammarCheckingService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,10 +363,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54GVH89862;
+				DEVELOPMENT_TEAM = 398RE9TJ24;
 				INFOPLIST_FILE = GrammarChecker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = elkollaly.GrammarChecker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.IDLabs.GrammarChecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -290,10 +378,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 54GVH89862;
+				DEVELOPMENT_TEAM = 398RE9TJ24;
 				INFOPLIST_FILE = GrammarChecker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = elkollaly.GrammarChecker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.IDLabs.GrammarChecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

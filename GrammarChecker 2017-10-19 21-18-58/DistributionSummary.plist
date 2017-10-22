@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GrammarChecker.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>9D9FE24198CCB272C76AF0C960ACE926A0DD9AD1</string>
+				<key>dateExpires</key>
+				<string>9/4/18</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>398RE9TJ24.com.IDLabs.GrammarChecker</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>398RE9TJ24</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>398RE9TJ24.com.IDLabs.GrammarChecker</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>GrammarChecker.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>6fa9ea98-4f31-4ae5-92a9-bf2e82405f31</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>398RE9TJ24</string>
+				<key>name</key>
+				<string>ID Labs, LLC</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

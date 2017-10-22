@@ -1,0 +1,15 @@
+
+App Thinning Size Report for All Variants of GrammarChecker
+
+Variant: GrammarChecker-iPhone 7 Plus-etc.ipa
+Supported devices: iPad (5th generation), iPad Air, iPad Air 2, iPad Pro (10.5-inch), iPad Pro (12.9-inch), iPad Pro (12.9-inch) (2nd generation), iPad Pro (9.7-inch), iPad mini 2, iPad mini 3, iPad mini 4, iPhone 5s, iPhone 6, iPhone 6 Plus, iPhone 6s, iPhone 6s Plus, iPhone 7, iPhone 7 Plus, iPhone 8, iPhone 8 Plus, iPhone SE, iPhone X, and iPod touch (6th generation)
+App + On Demand Resources size: 2.6 MB compressed, 7.8 MB uncompressed
+App size: 2.6 MB compressed, 7.8 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: GrammarChecker.ipa
+Supported devices: Universal
+App + On Demand Resources size: 2.6 MB compressed, 7.8 MB uncompressed
+App size: 2.6 MB compressed, 7.8 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
