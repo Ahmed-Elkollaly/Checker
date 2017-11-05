@@ -253,7 +253,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
         if let text = self.textLabel.text {
             
             let words = TextProcessingService.textProcessing(text)
-            let checker = GrammarCheckingService.grammarChecking(words)
+            let checker = GrammarCheckingService.shared.grammarChecking(words)
             
             
             self.textLabel.text = checker.0

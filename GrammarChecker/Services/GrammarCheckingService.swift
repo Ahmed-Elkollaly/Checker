@@ -9,8 +9,17 @@
 import Foundation
 import UIKit
 class GrammarCheckingService {
+    
+    static let shared =  GrammarCheckingService()
     enum WordType { case singular,plural,I,none,verb,modalVerb,preposition,particle}
-    static func presentTense(_ type:WordType,_ word:Word) -> Word{
+    
+    enum VerbTense {
+        case present,pastRegular,pastSimpleIrregular,pastParticipleIrregular,pastIrregular,continuous
+    }
+    /**
+     Mark :-  Get Present Tense of Verb
+     **/
+     func presentTense(_ type:WordType,_ word:Word) -> Word{
         
         var result = word
         if let verb = Tense.PresentSimple.irregularVerbs[word.wordBaseForm] {
@@ -61,7 +70,7 @@ class GrammarCheckingService {
         
         return result
     }
-    static func grammarChecking(_ words:[Word]) -> (String,String,[Word]){
+     func grammarChecking(_ words:[Word]) -> (String,String,[Word]){
         var prevWord:Word = Word(" ", " ", " ")
         var results :[Word] = []
         var errors:[Word] = []
@@ -75,8 +84,8 @@ class GrammarCheckingService {
                 results.append(s)
                 errors.append(s)
             }else if w.tag == "Verb" && !EnglishConstants.modalVerbs.contains(w.word.lowercased()) {
-                
-                let type = identifyFirstNounOrVerbOrPronoun(index, words)
+                let prevToken = identifyFirstNounOrVerbOrPronoun(index, results)
+                let type = prevToken.0
                 print("TYEPE = \(type)")
                 //Rule 1 : I , plural ,singular
                 if [WordType.I,WordType.plural,WordType.singular].contains(type){
@@ -134,6 +143,15 @@ class GrammarCheckingService {
                         results.append(Word(w.wordBaseForm,"Verb",w.wordBaseForm))
                             errors.append(w)
                     }
+                }else if type == .verb {
+//                    let verbTense = getVerbTense(w)
+//                    var resultWord:Word?
+//                    if prevToken.1 == "be" {
+//                        if prevToken.1.word.lowercase() == "being" {
+//                            resultWord = presentTense(w)
+//                        }
+//                    }
+                    results.append(w)
                 } else{
                     results.append(w)
                 }
@@ -169,47 +187,62 @@ class GrammarCheckingService {
         
         return (sentence,correctedSentence,errors)
     }
-    static func identifyFirstNounOrVerbOrPronoun(_ end:Int,_ words:[Word]) -> WordType{
+    
+    func identifyFirstNounOrVerbOrPronoun(_ end:Int,_ words:[Word]) -> (WordType,Word,Int){
         let subWords = words[..<end]
         var type : WordType = .none
+        var indexWord = -1
+        var word:Word = Word(" "," "," ")
         var prevWord:Word = Word(" "," "," ")
-        for currentWord in subWords {
+        for (index,currentWord) in subWords.enumerated() {
             if currentWord.tag == "Pronoun" && currentWord.word.lowercased() == currentWord.wordBaseForm.lowercased() {
                 if prevWord.word.lowercased() == "and" || EnglishConstants.pluralSubjectPronouns.contains(currentWord.word.lowercased()) {
                     type = .plural
+                    indexWord = index
+                    word = currentWord
                     
                 }else if EnglishConstants.I == currentWord.word{
                     type = .I
-                    
+                    indexWord = index
+                    word = currentWord
                 }else if EnglishConstants.singularSubjectPronouns.contains(currentWord.word.lowercased()){
                     type = .singular
-                    
+                    indexWord = index
+                    word = currentWord
                 }
                 
             }else if currentWord.tag == "Noun" && !["Particle","Preposition"].contains(prevWord.tag) {
                 print(prevWord)
                 if currentWord.word.lowercased() == currentWord.wordBaseForm {
                     type = .singular
-                    
+                    indexWord = index
+                    word = currentWord
                 }else{
                     type = .plural
-                    
+                    indexWord = index
+                    word = currentWord
                 }
             }else if currentWord.tag == "Verb" {
                 if EnglishConstants.modalVerbs.contains(currentWord.word.lowercased()){
                     type = .modalVerb
+                    indexWord = index
+                    word = currentWord
                 }else{
                     type = .verb
+                    indexWord = index
+                    word = currentWord
                 }
             }else if currentWord.tag == "Particle" {
                 type = .particle
+                indexWord = index
+                word = currentWord
             }
             prevWord = currentWord
             
         }
-        return type
+        return (type,word,indexWord)
     }
-    static func verbContinuousForm(_ word: Word) -> Word{
+     func verbContinuousForm(_ word: Word) -> Word{
         var result = word.wordBaseForm
         var secondCharBeforeLast = " "
         if result.characters.count > 2 {
@@ -238,7 +271,7 @@ class GrammarCheckingService {
         resultWord.word = result
         return resultWord
     }
-    static func regularVerbPastForm(_ word:Word) -> Word {
+     func regularVerbPastForm(_ word:Word) -> Word {
         var result = word.wordBaseForm
         var secondCharBeforeLast = " "
         if result.characters.count > 2 {
@@ -261,5 +294,33 @@ class GrammarCheckingService {
         var resultWord = word
         resultWord.word = result
         return resultWord
+    }
+     func getVerbTense(_ word:Word) -> VerbTense {
+        
+        var type :VerbTense = .present
+        
+        let lastTwoChars = String(word.word.suffix(2))
+        let lastThreeChars = String(word.word.suffix(3))
+        
+        if word.word != word.wordBaseForm  {
+            if lastThreeChars == "ing" {
+                type = .continuous
+            }else if let w = Tense.Past.irregularVerbs[word.wordBaseForm]{
+                if word.word == w.0 && w.0 == w.1 {
+                    type = .pastIrregular
+                }else if word.word == w.0 {
+                    type = .pastSimpleIrregular
+                }else if word.word == w.1 {
+                    type =  .pastParticipleIrregular
+                }else if lastTwoChars == "ed" {
+                    type = .pastRegular
+                }
+            }else if lastTwoChars == "ed" {
+                type = .pastRegular
+            }
+            
+            
+        }
+        return type
     }
 }
