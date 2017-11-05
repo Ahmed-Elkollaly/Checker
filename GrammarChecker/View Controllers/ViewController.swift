@@ -29,7 +29,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
     
     @IBOutlet weak var correctionLabel: UILabel!
     // MARK: UIViewController
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+   
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
         recordButton.isEnabled = false
 //        correctionLabel.isHidden = true
         resultTextLabel.isHidden = true
-        activityIndicator.isHidden = true
+      
         
        
     }
@@ -111,8 +111,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
             
             if error != nil || isFinal {
                 
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
+                
+               
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 
@@ -176,8 +176,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
 
             if error != nil || isFinal {
 
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
+                
+                
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
 
@@ -222,8 +222,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
     
     @IBAction func recordButtonTapped() {
         if audioEngine.isRunning {
-            activityIndicator.stopAnimating()
-            activityIndicator.isHidden = true
+           
             audioEngine.stop()
             recognitionRequest?.endAudio()
             recordButton.isEnabled = false
@@ -238,8 +237,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
             OperationQueue.main.addOperation {
                 TextToSpeechService.stopTextToSpeech()
             }
-            activityIndicator.isHidden = false
-            activityIndicator.startAnimating()
+           
             try! startRecording()
 
         }
