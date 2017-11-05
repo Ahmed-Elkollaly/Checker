@@ -193,10 +193,11 @@ class GrammarCheckingService {
         var type : WordType = .none
         var indexWord = -1
         var word:Word = Word(" "," "," ")
+        var beforePrevWord:Word = Word(" "," "," ")
         var prevWord:Word = Word(" "," "," ")
         for (index,currentWord) in subWords.enumerated() {
             if currentWord.tag == "Pronoun" && currentWord.word.lowercased() == currentWord.wordBaseForm.lowercased() {
-                if prevWord.word.lowercased() == "and" || EnglishConstants.pluralSubjectPronouns.contains(currentWord.word.lowercased()) {
+                if (prevWord.word.lowercased() == "and" && beforePrevWord.word.lowercased() == beforePrevWord.wordBaseForm.lowercased() && beforePrevWord.tag == "Pronoun") || EnglishConstants.pluralSubjectPronouns.contains(currentWord.word.lowercased()) {
                     type = .plural
                     indexWord = index
                     word = currentWord
@@ -237,6 +238,7 @@ class GrammarCheckingService {
                 indexWord = index
                 word = currentWord
             }
+            beforePrevWord = prevWord
             prevWord = currentWord
             
         }
