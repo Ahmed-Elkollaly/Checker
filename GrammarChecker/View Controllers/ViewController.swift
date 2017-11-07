@@ -24,6 +24,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
     @IBOutlet var textView : UITextView!
     @IBOutlet weak var textLabel: UILabel!
     
+    @IBOutlet weak var resultView: UITextView!
     @IBOutlet var recordButton : UIButton!
     @IBOutlet weak var resultTextLabel: UILabel!
     
@@ -37,7 +38,7 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
         // Disable the record buttons until authorization has been granted.
         recordButton.isEnabled = false
 //        correctionLabel.isHidden = true
-        resultTextLabel.isHidden = true
+       // resultTextLabel.isHidden = true
       
         
        
@@ -105,7 +106,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
             var isFinal = false
             
             if let result = result {
-                self.textLabel.text = result.bestTranscription.formattedString
+                //self.textLabel.text = result.bestTranscription.formattedString
+                self.textView.text = result.bestTranscription.formattedString
                 isFinal = result.isFinal
             }
             
@@ -138,7 +140,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
         }
         
         
-        textLabel.text = "I'm listening"
+        //textLabel.text = "I'm listening"
+        textView.text = "I am listening"
     }
     private func startRecording() throws {
         
@@ -170,7 +173,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
             var isFinal = false
 
             if let result = result {
-                self.textLabel.text = result.bestTranscription.formattedString
+                //self.textLabel.text = result.bestTranscription.formattedString
+                self.textView.text = result.bestTranscription.formattedString
                 isFinal = result.isFinal
             }
 
@@ -201,7 +205,8 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
 
         try audioEngine.start()
 
-        textLabel.text = "I'm listening"
+        //textLabel.text = "I'm listening"
+        textView.text = "I am listening"
         
     }
     
@@ -247,17 +252,19 @@ public class ViewController: UIViewController, SFSpeechRecognizerDelegate ,SFSpe
     
     public func speakText(){
         
-        
-        if let text = self.textLabel.text {
+        //if let text = self.textLabel.text
+        if let text = self.textView.text {
             
             let words = TextProcessingService.textProcessing(text)
             let checker = GrammarCheckingService.shared.grammarChecking(words)
             
             
-            self.textLabel.text = checker.0
-            self.resultTextLabel.text = checker.1
+            //self.textLabel.text = checker.0
+            self.textView.text = checker.0
+            //self.resultTextLabel.text = checker.1
+            self.resultView.text = checker.1
             //                        self.correctionLabel.isHidden = false
-            self.resultTextLabel.isHidden = false
+            //self.resultTextLabel.isHidden = false
             if checker.0 == checker.1 {
                 TextToSpeechService.textToSpeech("no mistakes")
             }else{
