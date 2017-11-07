@@ -144,14 +144,46 @@ class GrammarCheckingService {
                             errors.append(w)
                     }
                 }else if type == .verb {
-//                    let verbTense = getVerbTense(w)
+                    
+                    //Tenses Avialable
+//                present,pastRegular,pastSimpleIrregular,pastParticipleIrregular,pastIrregular,continuous
+                    let verbTense = getVerbTense(w)
+                    let previousWord = prevToken.1
+                    if ["am","is","are","was","were"].contains(previousWord.word) {
+                        if verbTense == .present {
+                            let contWord = verbContinuousForm(w)
+                            results.append(contWord)
+                            errors.append(w)
+                        }else if verbTense == .pastSimpleIrregular {
+                            if let irregularVerb = Tense.Past.irregularVerbs[w.wordBaseForm] {
+                                let v3 = irregularVerb.1
+                                results.append(Word(v3,"Verb",w.wordBaseForm))
+                                errors.append(w)
+                            }
+                        }else {
+                            results.append(w)
+                        }
+                        
+                        
+                    }else if ["had","has","have"].contains(previousWord.word) {
+                        if verbTense != .pastRegular && verbTense != .pastParticipleIrregular && verbTense != .pastIrregular {
+                            let v3 = pastParticipleForm(w)
+                            results.append(v3)
+                            errors.append(w)
+                        }else{
+                            results.append(w)
+                        }
+                    }else {
+                        results.append(w)
+                    }
+                    
 //                    var resultWord:Word?
 //                    if prevToken.1 == "be" {
 //                        if prevToken.1.word.lowercase() == "being" {
 //                            resultWord = presentTense(w)
 //                        }
 //                    }
-                    results.append(w)
+                    
                 } else{
                     results.append(w)
                 }
@@ -189,6 +221,7 @@ class GrammarCheckingService {
     }
     
     func identifyFirstNounOrVerbOrPronoun(_ end:Int,_ words:[Word]) -> (WordType,Word,Int){
+        
         let subWords = words[..<end]
         var type : WordType = .none
         var indexWord = -1
@@ -324,5 +357,17 @@ class GrammarCheckingService {
             
         }
         return type
+    }
+    func pastParticipleForm(_ word:Word) -> Word {
+        var result:Word = word
+        if let irregular = Tense.Past.irregularVerbs[result.wordBaseForm]{
+            result = Word(irregular.1,"Verb",word.wordBaseForm)
+            
+        }else if word.wordBaseForm == "be" {
+            result = Word("been","Verb",word.wordBaseForm)
+        } else{
+            result = regularVerbPastForm(word)
+        }
+        return result
     }
 }

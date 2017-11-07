@@ -22,8 +22,8 @@ struct Tense {
         static let verbToBe = ["be":("was","were","been")]
         static let irregularDifferentForms = [
             "get":(("got","-"),("got","gotten"))
-            ,"stink": (("stunk", "stunk")  ,  ("stunk","-"))
-            ,"tread":(("trod","-")  ,("trodden", "trod"))
+            ,"stink": (("stunk", "stank")  ,  ("stunk","-"))
+            ,"tread":(("trod","-")  ,("trod", "trodden"))
         ]
         static let irregularVerbs = ["abide"  :  ("abode" ,   "abode")
             ,"arise"  :  ("arose"  ,  "arisen")
