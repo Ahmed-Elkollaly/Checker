@@ -173,6 +173,33 @@ class GrammarCheckingService {
                         }else{
                             results.append(w)
                         }
+                    }else if previousWord.word == "be" {
+                        let prev2 = identifyFirstNounOrVerbOrPronoun(prevToken.2, results)
+                        if prev2.0 == .modalVerb  {
+                            if verbTense == .present {
+                                let resultVerb = verbContinuousForm(w)
+                                results.append(resultVerb)
+                                errors.append(w)
+                            }else if verbTense == .pastSimpleIrregular {
+                                let resultVerb = pastParticipleForm(w)
+                                results.append(resultVerb)
+                                errors.append(w)
+                            }else{
+                                results.append(w)
+                            }
+                        
+                        
+                        }else if prev2.0 == .particle {
+                            if verbTense != .pastRegular && verbTense != .pastParticipleIrregular && verbTense != .pastIrregular {
+                                let resultVerb = pastParticipleForm(w)
+                                results.append(resultVerb)
+                                errors.append(w)
+                            }else {
+                                results.append(w)
+                            }
+                        }else{
+                            results.append(w)
+                        }
                     }else {
                         results.append(w)
                     }
